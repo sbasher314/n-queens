@@ -11,7 +11,8 @@ module.exports = {
   parserOptions: {
     ecmaFeatures: {
       'jsx': true
-    }
+    },
+    'ecmaVersion': 2016
   },
   rules: {
     /* Indentation */
