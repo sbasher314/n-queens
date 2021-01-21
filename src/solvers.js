@@ -24,7 +24,7 @@
 
 window.findNRooksSolution = function(n) {
   var solution = [];
-  var testBoard = new Board({'n' : n});
+  var testBoard = new Board({'n': n});
   // for each row
   for (var rowIndex = 0; rowIndex < n; rowIndex++) {
     // for each column
@@ -46,7 +46,7 @@ window.findNRooksSolution = function(n) {
 // return the number of nxn chessboards that exist, with n rooks placed such that none of them can attack each other
 window.countNRooksSolutions = function(n) {
   var solutionCount = 0;
-  var testBoard = new Board({'n' : n});
+  var testBoard = new Board({'n': n});
 
   var recursiveSolutionFinder = function (board, rowIndex) {
     if (rowIndex === n - 1) {
@@ -79,7 +79,7 @@ window.countNRooksSolutions = function(n) {
 window.findNQueensSolution = function(n) {
 
   var solution = [];
-  var testBoard = new Board({'n' : n});
+  var testBoard = new Board({'n': n});
   var solutionFound = false;
   if (n === 0) {
     //return solution;
@@ -139,7 +139,7 @@ window.countNQueensSolutions = function(n) {
     return 1;
   }
   var solutionCount = 0;
-  var testBoard = new Board({'n' : n});
+  var testBoard = new Board({'n': n});
 
   var recursiveSolutionFinder = function (board, rowIndex) {
 
