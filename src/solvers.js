@@ -10,18 +10,7 @@
 // (There are also optimizations that will allow you to skip a lot of the dead search space)
 // take a look at solversSpec.js to see what the tests are expecting
 
-
 // return a matrix (an array of arrays) representing a single nxn chessboard, with n rooks placed such that none of them can attack each other
-
-
-// iterate through n
-// start n new chessboards, each with a piece at a different column of row 0
-// iterate through n
-// for each chessboard we have
-// start a new chessboard, each with a piece at a different column of row 1, except for when there would be a conflict
-// continue for the rest of n times
-// newBoard = new Board(matrix);
-
 window.findNRooksSolution = function(n) {
   var testBoard = new Board({'n': n});
 
@@ -68,7 +57,6 @@ window.findNQueensSolution = function(n) {
 
   var solution = [];
   var testBoard = new Board({'n': n});
-  //var solutionBoard;
 
   if (n === 0 || n === 2 || n === 3) {
     return testBoard.rows();
