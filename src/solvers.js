@@ -38,8 +38,7 @@ window.countNRooksSolutions = function(n) {
         if (rowIndex === n - 1) {
           solutionCount++;
         } else {
-          var newBoard = new Board(board.rows());
-          recursiveSolutionFinder(newBoard, rowIndex + 1);
+          recursiveSolutionFinder(board, rowIndex + 1);
         }
       }
       board.togglePiece(rowIndex, colIndex);
@@ -65,8 +64,7 @@ window.findNQueensSolution = function(n) {
         if (rowIndex === n - 1) {
           return true;
         } else {
-          var newBoard = new Board(board.rows());
-          if (recursiveSolutionFinder(newBoard, rowIndex + 1)) {
+          if (recursiveSolutionFinder(board, rowIndex + 1)) {
             return true;
           }
         }
@@ -100,8 +98,7 @@ window.countNQueensSolutions = function(n) {
         if (rowIndex === n - 1) {
           solutionCount++;
         } else {
-          var newBoard = new Board(board.rows());
-          recursiveSolutionFinder(newBoard, rowIndex + 1);
+          recursiveSolutionFinder(board, rowIndex + 1);
         }
       }
       board.togglePiece(rowIndex, colIndex);
