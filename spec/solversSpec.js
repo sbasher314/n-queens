@@ -77,6 +77,16 @@ describe('solvers', function() {
       });
     });
 
+    it('finds the number of valid solutions for n of 9-12', function() {
+      _.range(9, 13).map(function(n) {
+        console.log(n);
+        var solutionCount = countNQueensSolutions(n);
+        var expectedSolutionCount = [1, 1, 0, 0, 2, 10, 4, 40, 92, 352, 724, 2680, 14200][n];
+
+        expect(solutionCount).to.be.equal(expectedSolutionCount);
+      });
+    }).timeout(5000);
+
   });
 
 });
