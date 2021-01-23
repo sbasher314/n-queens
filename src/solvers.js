@@ -31,24 +31,25 @@ window.countNRooksSolutions = function(n) {
   let solutionCount = 0;
   let testBoard = new Board({'n': n});
 
-  let recursiveSolutionFinder = function (board, rowIndex) {
-    let isRow0 = (rowIndex === 0);
-    let adjustedN = isRow0 ? n / 2 : n;
-    for (let colIndex = 0; colIndex < adjustedN; colIndex++) {
-      board.togglePiece(rowIndex, colIndex);
-      if (!board.hasColConflictAt(colIndex)) {
-        if (rowIndex === n - 1) {
-          solutionCount++;
-        } else {
-          recursiveSolutionFinder(board, rowIndex + 1);
-        }
-      }
-      board.togglePiece(rowIndex, colIndex);
-      if (isRow0 && colIndex === Math.floor(n / 2) - 1) {
-        solutionCount = solutionCount * 2;
-      }
-    }
-  };
+  ////////// Recursive implementation
+  // let recursiveSolutionFinder = function (board, rowIndex) {
+  //   let isRow0 = (rowIndex === 0);
+  //   let adjustedN = isRow0 ? n / 2 : n;
+  //   for (let colIndex = 0; colIndex < adjustedN; colIndex++) {
+  //     board.togglePiece(rowIndex, colIndex);
+  //     if (!board.hasColConflictAt(colIndex)) {
+  //       if (rowIndex === n - 1) {
+  //         solutionCount++;
+  //       } else {
+  //         recursiveSolutionFinder(board, rowIndex + 1);
+  //       }
+  //     }
+  //     board.togglePiece(rowIndex, colIndex);
+  //     if (isRow0 && colIndex === Math.floor(n / 2) - 1) {
+  //       solutionCount = solutionCount * 2;
+  //     }
+  //   }
+  // };
 
   //recursiveSolutionFinder(testBoard, 0);
 
