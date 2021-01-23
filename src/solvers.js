@@ -28,11 +28,13 @@ window.findNRooksSolution = function(n) {
 
 // return the number of nxn chessboards that exist, with n rooks placed such that none of them can attack each other
 window.countNRooksSolutions = function(n) {
-  var solutionCount = 0;
-  var testBoard = new Board({'n': n});
+  let solutionCount = 0;
+  let testBoard = new Board({'n': n});
 
-  var recursiveSolutionFinder = function (board, rowIndex) {
-    for (var colIndex = 0; colIndex < n; colIndex++) {
+  let recursiveSolutionFinder = function (board, rowIndex) {
+    let isRow0 = (rowIndex === 0);
+    let adjustedN = isRow0 ? n / 2 : n;
+    for (let colIndex = 0; colIndex < adjustedN; colIndex++) {
       board.togglePiece(rowIndex, colIndex);
       if (!board.hasColConflictAt(colIndex)) {
         if (rowIndex === n - 1) {
@@ -42,10 +44,23 @@ window.countNRooksSolutions = function(n) {
         }
       }
       board.togglePiece(rowIndex, colIndex);
+      if (isRow0 && colIndex === Math.floor(n / 2) - 1) {
+        solutionCount = solutionCount * 2;
+      }
     }
   };
 
-  recursiveSolutionFinder(testBoard, 0);
+  //recursiveSolutionFinder(testBoard, 0);
+
+  const factorial = function (n) {
+    if (n === 0) {
+      return 1;
+    } else {
+      return n * factorial(n - 1);
+    }
+  };
+
+  solutionCount = factorial(n);
 
   console.log('Number of solutions for ' + n + ' rooks:', solutionCount);
   return solutionCount;
@@ -86,11 +101,13 @@ window.countNQueensSolutions = function(n) {
     return 1;
   }
 
-  var solutionCount = 0;
-  var testBoard = new Board({'n': n});
+  let solutionCount = 0;
+  let testBoard = new Board({'n': n});
 
   var recursiveSolutionFinder = function (board, rowIndex) {
-    for (var colIndex = 0; colIndex < n; colIndex++) {
+    let isRow0 = (rowIndex === 0);
+    let adjustedN = isRow0 ? n / 2 : n;
+    for (let colIndex = 0; colIndex < adjustedN; colIndex++) {
       board.togglePiece(rowIndex, colIndex);
       if (!board.hasColConflictAt(colIndex)
       && !board.hasMajorDiagonalConflictAt(colIndex - rowIndex)
@@ -102,11 +119,13 @@ window.countNQueensSolutions = function(n) {
         }
       }
       board.togglePiece(rowIndex, colIndex);
+      if (isRow0 && colIndex === Math.floor(n / 2) - 1) {
+        solutionCount = solutionCount * 2;
+      }
     }
   };
 
   recursiveSolutionFinder(testBoard, 0);
-
   console.log('Number of solutions for ' + n + ' queens:', solutionCount);
   return solutionCount;
 };
